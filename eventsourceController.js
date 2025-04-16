@@ -20,8 +20,8 @@ class EventsourceController {
                 .limit(30)
                 .lean();
         }).then((messages) => {
-            console.log(messages);
-            messages.reverse()
+            messages
+                .toReversed()
                 .forEach(msg => {
                     res.write(`data: ${JSON.stringify(msg)}\n\n`);
                 });
